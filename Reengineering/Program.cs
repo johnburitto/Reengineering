@@ -1,21 +1,21 @@
 ﻿using Reengineering.Entities;
-using Reengineering.Enums;
-using System.Collections.Generic;
+using Reengineering.Entities.FrequentRentalPoints;
+using Reengineering.Entities.Prices;
 
 var rembo = new Movie 
 { 
     Title = "Rembo",
-    Type = MovieType.Regular
+    Price = new RegularPrice()
 };
 var lotr = new Movie 
 { 
     Title = "The Lord of the Rings",
-    Type = MovieType.NewRelease
+    Price = new NewReleasePrice()
 };
 var harryPotter = new Movie 
 { 
     Title = "Harry Potter",
-    Type = MovieType.Childrens
+    Price = new ChildrensPrice()
 };
 
 var rentals = new List<Rental>() 
@@ -23,17 +23,20 @@ var rentals = new List<Rental>()
     new Rental
     {
         Movie = rembo,
-        DaysRented = 1
+        DaysRented = 1,
+        FrequentRentalPoints = new NormalFrequentRentalPoints()
     },
     new Rental
     {
         Movie = lotr,
-        DaysRented = 4
+        DaysRented = 4,
+        FrequentRentalPoints = new NewReleaseFrequentRentalPoints()
     },
     new Rental
     {
         Movie = harryPotter,
-        DaysRented = 5
+        DaysRented = 5,
+        FrequentRentalPoints = new NormalFrequentRentalPoints()
     }
 };
 var customer = new Customer

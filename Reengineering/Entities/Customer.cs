@@ -1,6 +1,4 @@
-﻿using Reengineering.Enums;
-
-namespace Reengineering.Entities
+﻿namespace Reengineering.Entities
 {
     public class Customer
     {
@@ -15,9 +13,9 @@ namespace Reengineering.Entities
 
             Rentals?.ForEach(rental =>
             {
-                var thisAmount = rental.Movie?.Charge(rental.DaysRented) ?? 0.0f;
+                var thisAmount = rental.Movie?.Price?.Charge(rental.DaysRented) ?? 0.0f;
 
-                frequentRentalPoints += rental.FrequentRentalPoints();
+                frequentRentalPoints += rental.FrequentRentalPoints?.FrequentRentalPoints(rental.DaysRented) ?? 0;
 
                 result += $"\t{rental.Movie?.Title}\t{thisAmount}\n";
                 totalAmount += thisAmount;

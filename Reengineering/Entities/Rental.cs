@@ -1,4 +1,4 @@
-﻿using Reengineering.Enums;
+﻿using Reengineering.Entities.FrequentRentalPoints;
 
 namespace Reengineering.Entities
 {
@@ -6,11 +6,6 @@ namespace Reengineering.Entities
     {
         public Movie? Movie { get; set; }
         public int DaysRented { get; set; }
-
-        public int FrequentRentalPoints() => Movie?.Type switch
-        {
-            MovieType.NewRelease => DaysRented > 1 ? 2 : 1,
-            _ => 1
-        };
+        public IFrequentRentalPoints? FrequentRentalPoints { get; set; }
     }
 }
