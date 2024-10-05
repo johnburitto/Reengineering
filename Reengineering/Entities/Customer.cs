@@ -17,7 +17,7 @@ namespace Reengineering.Entities
             {
                 var thisAmount = rental.Movie?.Charge(rental.DaysRented) ?? 0.0f;
 
-                frequentRentalPoints += rental.Movie?.Type == MovieType.NewRelease && rental.DaysRented > 1 ? 2 : 1;
+                frequentRentalPoints += rental.FrequentRentalPoints();
 
                 result += $"\t{rental.Movie?.Title}\t{thisAmount}\n";
                 totalAmount += thisAmount;
