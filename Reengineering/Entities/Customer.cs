@@ -15,15 +15,7 @@ namespace Reengineering.Entities
 
             Rentals?.ForEach(rental =>
             {
-                var thisAmount = 0.0f;
-
-                switch (rental.Movie?.Type)
-                {
-                    case MovieType.Regular: thisAmount += rental.DaysRented > 2 ? 2 + ((rental.DaysRented - 2) * 1.5f) : 2; break;
-                    case MovieType.NewRelease: thisAmount += rental.DaysRented * 3; break;
-                    case MovieType.Childrens:thisAmount += rental.DaysRented > 3 ? 1.5f + ((rental.DaysRented - 3) * 1.5f) : 1.5f; break;
-                    default: break;
-                }
+                var thisAmount = rental.Movie?.Charge(rental.DaysRented) ?? 0.0f;
 
                 frequentRentalPoints += rental.Movie?.Type == MovieType.NewRelease && rental.DaysRented > 1 ? 2 : 1;
 
