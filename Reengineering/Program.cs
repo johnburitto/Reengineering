@@ -1,6 +1,7 @@
 ﻿using Reengineering.Entities;
 using Reengineering.Enums;
 using System.Collections.Generic;
+using System.Text.Json;
 
 var rembo = new Movie 
 { 
@@ -42,4 +43,4 @@ var customer = new Customer
     Rentals = rentals
 };
 
-Console.WriteLine(customer.Statement());
+Console.WriteLine(JsonSerializer.Serialize(customer));
